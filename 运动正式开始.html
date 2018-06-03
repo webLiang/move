@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1{
+			position: absolute;
+			background: red;
+			width: 100px;
+			height: 100px;
+			top: 0;
+			left: 0px;
+		}
+		#btn1{
+			position: absolute;
+			top: 100px;
+		}
+		#line{
+			position: absolute;
+			left: 300px;
+			height: 1000px;
+			width:1px;
+			background: black;
+		}
+	</style>
+	<script>
+		var time = null;
+		window.onload=function(){
+			var oBnt1 = document.getElementById('btn1')
+			oBnt1.onclick = function(){
+				startMove(300)
+			}	
+		}
+
+		function startMove(iTarget){
+			var oBnt1 = document.getElementById('btn1');
+			var oDiv1 = document.getElementById('div1');
+			
+			//console.log('hello')
+			clearInterval(time);
+			time = setInterval(function(){
+				
+				var iSpeed = (iTarget - oDiv1.offsetLeft)/10;
+				iSpeed>0 ? iSpeed=Math.ceil(iSpeed):iSpeed = Math.floor(iSpeed);
+				// if (iSpeed>0) {
+				// 	iSpeed = Math.ceil(iSpeed);
+				// }else{
+				// 	iSpeed = Math.floor(iSpeed);
+				// }
+				
+				if (oDiv1.offsetLeft == iTarget) {
+				clearInterval(time);
+				}else{
+					oDiv1.style.left = oDiv1.offsetLeft +iSpeed +'px';
+					console.log(oDiv1.offsetLeft)
+				}
+			},30)
+			
+		}
+
+	</script>
+</head>
+<body>
+	
+	<div id="div1"></div>
+	<button id="btn1">开始运动</button>
+	<div id="line"></div>
+</body>
+</html>

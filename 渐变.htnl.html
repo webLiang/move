@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#img1{
+			opacity: 0.3;
+		}
+	</style>
+	<script>
+		var alpha = 30;
+		var timer = null;
+		window.onload=function(){
+			var oImg1 = document.getElementById('img1')
+			oImg1.onmouseover=function(){
+				
+				startMove(100)
+			}
+			oImg1.onmouseout=function(){
+				startMove(30)
+			}
+		}
+		function startMove(iTarget){
+			
+			var oImg1 = document.getElementById('img1')
+			clearInterval(timer);
+			timer = setInterval(function(){
+				
+				if (alpha < iTarget) {
+					var iSpeed = 1;
+				}else{
+					var iSpeed = -1;
+				}
+				//console.log('hehe')
+				if (alpha==iTarget) {
+					clearInterval(timer)
+				}else{
+					alpha += iSpeed
+					oImg1.style.opacity = alpha/100;
+				}
+					
+			},30)
+		}
+	</script>
+</head>
+<body>
+	<div >
+		<img id="img1" src="a.jpg" alt="">
+	</div>
+</body>
+</html>

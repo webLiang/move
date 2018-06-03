@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload=function() {
+			var oTxt1 = document.getElementById('txt1')
+			var oTxt2 = document.getElementById('txt2')
+			var oBnt1 = document.getElementById('btn1');
+			oBnt1.onclick=function(){
+				oTxt1.value += oTxt2.value+'\n';
+				oTxt2.value = '';
+			}
+			oTxt2.onkeyup=function(ev){
+				if (ev.keyCode==13 && ev.ctrlKey) {
+					oTxt1.value += oTxt2.value+'\n';
+					oTxt2.value = '';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<textarea id="txt1" cols="40" rows="10"></textarea>
+<br>	
+<input id="txt2" type="text">
+<input id="btn1" value="提交" type="button">
+</body>
+</html>
