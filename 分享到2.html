@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1{
+			position: absolute;
+			background: red;
+			width: 100px;
+			height: 200px;
+			top: 0;
+			left: -100px;
+		}
+		#div1 span{
+			background: yellow;
+			position: absolute;
+			left: 100px;
+			top: 70px;
+			width: 20px;
+			height: 60px;
+			text-align: center;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oDiv1 = document.getElementById('div1');
+			 oDiv1.onmousemove=function(){
+			 	startMove(10,0);
+			 	//console.log('hello1')
+			 };
+			 oDiv1.onmouseout=function(){
+			 	console.log('hello')
+			 	startMove(-10,-100);
+			 };
+		}
+		var timer = null;
+		function startMove(iSpeed,iTarget) {
+			oDiv1 = document.getElementById('div1');
+			clearInterval(timer);
+			timer = setInterval(function(){
+				if (oDiv1.offsetLeft==iTarget) {
+					clearInterval(timer)
+				}else{
+					oDiv1.style.left = oDiv1.offsetLeft+iSpeed+'px';
+				}
+				
+			},30)
+		}
+		// function startMove2() {
+		// 	oDiv1 = document.getElementById('div1');
+			
+		// 	clearInterval(timer);
+		// 	timer = setInterval(function(){
+		// 		var iSpeed=10;
+		// 		if (oDiv1.offsetLeft==-100) {
+		// 			clearInterval(timer)
+		// 		}else{
+		// 			oDiv1.style.left = oDiv1.offsetLeft-iSpeed+'px';
+		// 		}
+				
+		// 	},30)
+		// }
+		// function startMove2()
+		// {
+		// 	var oDiv=document.getElementById('div1');
+			
+		// 	clearInterval(timer);
+		// 	timer=setInterval(function (){
+		// 		var iSpeed=-10;
+				
+		// 		if(oDiv.offsetLeft==-100)
+		// 		{
+		// 			clearInterval(timer);
+		// 		}
+		// 		else
+		// 		{
+		// 			oDiv.style.left=oDiv.offsetLeft+iSpeed+'px';
+		// 		}
+		// 	}, 30);
+		// }
+	</script>
+</head>
+<body>
+	
+	<div id="div1">
+		<span>分享到</span>
+	</div>
+	
+</body>
+</html>
