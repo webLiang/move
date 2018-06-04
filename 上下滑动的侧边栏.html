@@ -26,16 +26,17 @@
 		var timer = null;
 		function startMove(iTarget){
 			var oDiv1 = document.getElementById('div1');
-			var iSpeed = (iTarget - oDiv1.offsetTop)/30;
-			iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) :  iSpeed = Math.floor(iSpeed);
+			
 			clearInterval(timer)
 			timer = setInterval(function(){
+				var iSpeed = (iTarget - oDiv1.offsetTop)/10;
+			iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) :  iSpeed = Math.floor(iSpeed);
 				console.log(iSpeed)
 				if (oDiv1.offsetTop == iTarget) {
 					clearInterval(timer)
 				}else{
 					oDiv1.style.top = oDiv1.offsetTop+iSpeed+'px'
-				}	
+				}
 			},30)
 		}
 	</script>
