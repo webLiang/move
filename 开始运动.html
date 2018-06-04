@@ -10,21 +10,56 @@
 			width: 100px;
 			height: 100px;
 			top: 0;
-			left: 0;
+			left: 500px;
 		}
 		#btn1{
 			position: absolute;
 			top: 100px;
 		}
+		#line{
+			position: absolute;
+			left: 300px;
+			width:1px;
+			height: 800px;
+			background: #f0f;
+		}
 	</style>
 	<script>
-		oBnt1 = document.getElementById('btn1');
-		oDiv1 = document.getElementById('div1')
+		//oBnt1 = document.getElementById('btn1');
+		
+		var timer = null;
+		window.onload = function(){
+			var oDiv1 = document.getElementById('div1');
+			var oBnt1 = document.getElementById('btn1');
+			oBnt1.onclick =function(){
+				startMove(300)
+			} 
+		}
+		function startMove(iTarget){
+			var oDiv1 = document.getElementById('div1');
+			clearInterval(timer);
+			setInterval(function(){
+				var iSpeed = 7;
+				iTarget >oDiv1.offsetLeft?iSpeed=iSpeed:iSpeed=-iSpeed;
+				if (Math.abs(oDiv1.offsetLeft - iTarget)<=iSpeed) {
+					clearInterval(timer);
+					oDiv1.style.left = iTarget + 'px';
+				}else{
+					if (oDiv1.offsetLeft==iTarget) {
+					clearInterval(timer)
+					}else{
+					oDiv1.style.left = oDiv1.offsetLeft+iSpeed+'px';
+					}
+				}
+				
+			},30)
+		}
 	</script>
 </head>
 <body>
 	
 	<div id="div1"></div>
 	<button id="btn1">开始运动</button>
+	<div id="line"></div>
 </body>
 </html>
