@@ -19,6 +19,7 @@
 		window.onscroll=function(){
 			var oDiv1 = document.getElementById('div1');
 			var t = document.documentElement.scrollTop+ (document.documentElement.clientHeight-oDiv1.offsetHeight)/2;
+			console.log
 			//oDiv1.style.top = t+'px'
 			t = Math.ceil(t);
 			startMove(t);
